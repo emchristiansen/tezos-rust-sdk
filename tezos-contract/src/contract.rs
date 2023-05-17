@@ -75,7 +75,7 @@ impl Contract {
     pub fn storage(&self) -> &Storage {
         &self.storage
     }
-
+    
     pub(crate) async fn new<HttpClient: Http>(
         client: &TezosRpc<HttpClient>,
         address: ContractHash,

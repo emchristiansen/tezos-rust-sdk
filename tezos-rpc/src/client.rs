@@ -112,7 +112,9 @@ impl TezosRpc<HttpClient> {
     pub fn new_with_chain_id(rpc_endpoint: String, chain_id: TezosRpcChainId) -> Self {
         Self::new_rpc_with_chain_id(rpc_endpoint, chain_id)
     }
+}
 
+impl<HttpClient: Http + Sync> TezosRpc<HttpClient> {
     /// Estimates the minimum fee for the given `operation`. The returned operation has the fee, gas_limit and storage_limit values set accordingly.
     pub async fn min_fee(
         &self,
@@ -127,6 +129,11 @@ impl TezosRpc<HttpClient> {
 }
 
 impl<HttpClient: Http> TezosRpc<HttpClient> {
+    /// Creates a Tezos RPC client from the given context.
+    pub fn from_context(context: TezosRpcContext<HttpClient>) -> Self {
+        Self { context }
+    }
+
     pub fn context(&self) -> &TezosRpcContext<HttpClient> {
         &self.context
     }

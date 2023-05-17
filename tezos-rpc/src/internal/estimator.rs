@@ -50,7 +50,7 @@ impl<'a, HttpClient: Http> OperationFeeEstimator<'a, HttpClient> {
 const PLACEHOLDER_SIGNATURE: &'static str = "edsigtXomBKi5CTRf5cjATJWSyaRvhfYNHqSUGrn4SdbYRcGwQrUGjzEfQDTuqHhuA8b2d8NarZjz8TRf65WkpQmo423BtomS8Q";
 
 #[async_trait]
-impl<'a, HttpClient: Http + Send + Sync> FeeEstimator for OperationFeeEstimator<'a, HttpClient> {
+impl<'a, HttpClient: Http + Sync> FeeEstimator for OperationFeeEstimator<'a, HttpClient> {
     async fn min_fee<'b>(
         &self,
         operation: UnsignedOperation,
