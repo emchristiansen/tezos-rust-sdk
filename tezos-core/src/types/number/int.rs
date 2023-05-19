@@ -43,7 +43,7 @@ impl Int {
         Self::from(value)
     }
 
-    pub fn from_intenger<I: Integer + ToString>(value: I) -> Self {
+    pub fn from_integer<I: Integer + ToString>(value: I) -> Self {
         Self::from_string(value.to_string()).unwrap()
     }
 
@@ -104,37 +104,37 @@ impl ToBigInt for Int {
 
 impl From<i8> for Int {
     fn from(value: i8) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 
 impl From<i16> for Int {
     fn from(value: i16) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 
 impl From<i32> for Int {
     fn from(value: i32) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 
 impl From<i64> for Int {
     fn from(value: i64) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 
 impl From<i128> for Int {
     fn from(value: i128) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 
 impl From<BigInt> for Int {
     fn from(value: BigInt) -> Self {
-        Self::from_intenger(value)
+        Self::from_integer(value)
     }
 }
 

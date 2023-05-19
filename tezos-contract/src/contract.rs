@@ -75,6 +75,10 @@ impl Contract {
     pub fn storage(&self) -> &Storage {
         &self.storage
     }
+
+    pub fn entrypoints(&self) -> &MappedEntrypoints {
+        &self.entrypoints
+    }
     
     pub(crate) async fn new<HttpClient: Http>(
         client: &TezosRpc<HttpClient>,

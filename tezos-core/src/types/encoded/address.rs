@@ -1,3 +1,5 @@
+use std::fmt::{Display, Formatter, self};
+
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
@@ -337,6 +339,12 @@ impl ContractAddress {
                 None
             },
         ))
+    }
+}
+
+impl Display for ContractAddress {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.contract_hash())
     }
 }
 
