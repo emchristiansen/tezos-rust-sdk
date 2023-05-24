@@ -277,7 +277,7 @@ impl From<P256PublicKeyHash> for ImplicitAddress {
 /// A base58 encoded contract address with optianally an entrypoint.
 ///
 /// See also: [ContractHash].
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),

@@ -18,7 +18,7 @@ use super::big_map::{BigMap, BigMapContainer};
 #[derive(Debug, Clone)]
 pub struct Storage {
     big_maps: BigMapContainer,
-    mapped: MappedStorage,
+    pub mapped: MappedStorage,
 }
 
 impl Storage {
@@ -57,10 +57,10 @@ impl Storage {
 }
 
 #[derive(Debug, Clone)]
-struct MappedStorage {
+pub struct MappedStorage {
     r#type: Type,
     value: Data,
-    mapped_values: HashMap<String, Data>,
+    pub mapped_values: HashMap<String, Data>,
 }
 
 impl MappedStorage {

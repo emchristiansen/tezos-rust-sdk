@@ -5,7 +5,7 @@ mod storage;
 use async_trait::async_trait;
 
 use tezos_core::types::{
-    encoded::{Address, ContractHash, ImplicitAddress},
+    encoded::{Address, ContractHash, ImplicitAddress, ContractAddress},
     mutez::Mutez,
     number::{Int, Nat},
 };
@@ -473,6 +473,12 @@ pub trait ContractFetcher {
         address: ContractHash,
         block_id: Option<&BlockId>,
     ) -> Result<Contract>;
+
+    async fn contract_at_address(
+        &self,
+        address: &ContractAddress,
+        block_id: Option<&BlockId>,
+    ) -> Result<Contract>;
 }
 
 #[async_trait]
@@ -483,5 +489,13 @@ impl<HttpClient: Http + Sync> ContractFetcher for TezosRpc<HttpClient> {
         block_id: Option<&BlockId>,
     ) -> Result<Contract> {
         Contract::new(self, address, block_id).await
+    }
+
+    async fn contract_at_address(
+        &self,
+        address: &ContractAddress,
+        block_id: Option<&BlockId>,
+    ) -> Result<Contract> {
+        Self::contract_at(self, address.contract_hash().try_into().unwrap(), block_id).await
     }
 }
