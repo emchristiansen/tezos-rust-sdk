@@ -47,7 +47,7 @@ pub mod default {
 
     #[derive(Debug)]
     pub struct HttpClient {
-        rpc_endpoint: String,
+        pub rpc_endpoint: String,
         client: Client,
     }
 
