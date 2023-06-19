@@ -84,7 +84,7 @@ impl From<tezos_operation::operations::SignedOperation> for Operation {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, enum_as_inner::EnumAsInner)]
 #[serde(untagged)]
 pub enum OperationContent {
     // Present in alpha protocol

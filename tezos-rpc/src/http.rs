@@ -45,7 +45,7 @@ pub mod default {
     use super::*;
     use reqwest::{Client, Response};
 
-    #[derive(Debug)]
+    #[derive(Debug, Clone)]
     pub struct HttpClient {
         pub rpc_endpoint: String,
         client: Client,
