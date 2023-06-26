@@ -4,7 +4,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Constants {
     /// integer ∈ [0, 255]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -304,7 +304,7 @@ pub struct Constants {
     pub sc_rollup_max_available_messages: Option<i32>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RatioConstant {
     /// integer ∈ [0, 2^16-1]
     numerator: u16,
