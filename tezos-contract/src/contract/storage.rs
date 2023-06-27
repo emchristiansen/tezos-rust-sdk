@@ -9,7 +9,7 @@ use tezos_michelson::{
     },
     MichelinePacker,
 };
-use tezos_rpc::{http::Http, models::contract::ContractScript};
+use tezos_rpc::models::contract::ContractScript;
 
 use crate::{utils::AnyAnnotationValue, Error, Result};
 
@@ -18,7 +18,7 @@ use super::big_map::{BigMap, BigMapContainer};
 #[derive(Debug, Clone)]
 pub struct Storage {
     big_maps: BigMapContainer,
-    pub mapped: MappedStorage,
+    mapped: MappedStorage,
 }
 
 impl Storage {
