@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter, self};
+use std::fmt::{self, Display, Formatter};
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
@@ -147,7 +147,7 @@ impl TryFrom<Address> for ContractHash {
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(
     feature = "serde",
-    derive(Serialize, Deserialize),
+    derive(Serialize, Deserialize, enum_as_inner::EnumAsInner),
     serde(try_from = "String", untagged)
 )]
 pub enum ImplicitAddress {

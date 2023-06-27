@@ -4,7 +4,6 @@ version = "0.1.4"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 derive_more = "0.99.17"
 bs58 = { version = "0.4", features = ["check"] }
@@ -20,6 +19,7 @@ lazy_static = "1"
 serde = { version = "1", features = ["derive"], optional = true }
 blake2 = "0.10"
 cfg-if = "1"
+enum-as-inner = "0.5.2"
 
 [features]
 full_crypto = ["ed25519", "secp256_k1", "p256"]
