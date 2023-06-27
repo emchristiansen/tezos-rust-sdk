@@ -9,7 +9,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct DoublePreendorsementEvidence {
     /// [OperationKind::DoublePreendorsementEvidence]
     pub kind: OperationKind,
@@ -45,7 +45,7 @@ impl TryFrom<DoublePreendorsementEvidence>
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct InlinedPreendorsement {
     /// A block identifier (Base58Check-encoded)
     pub branch: BlockHash,

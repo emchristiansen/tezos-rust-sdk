@@ -13,7 +13,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejection {
     /// [OperationKind::TxRollupRejection]
     pub kind: OperationKind,
@@ -36,26 +36,26 @@ pub struct TxRollupRejection {
     pub metadata: Option<TxRollupRejectionMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionMetadata {
     pub operation_result: TxRollupRejectionOperationResult,
     #[serde(default)]
     pub balance_updates: Vec<BalanceUpdate>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum TxRollupRejectionMessage {
     Batch(TxRollupRejectionBatchMessage),
     Deposit(TxRollupRejectionDepositMessage),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionBatchMessage {
     pub batch: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionDepositMessage {
     pub sender: ImplicitAddress,
     pub destination: TxRollupL2Address,
@@ -63,13 +63,13 @@ pub struct TxRollupRejectionDepositMessage {
     pub amount: Mutez,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionMessageResult {
     pub context_hash: ContextHash,
     pub withdraw_list_hash: WithdrawListHash,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionProof {
     pub version: i16,
     pub before: ValueOrNodeContext,
@@ -77,17 +77,17 @@ pub struct TxRollupRejectionProof {
     pub state: serde_json::Value,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct ValueContext {
     pub value: ContextHash,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct NodeContext {
     pub node: ContextHash,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum ValueOrNodeContext {
     Value(ValueContext),

@@ -10,7 +10,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupSubmitBatch {
     /// [OperationKind::TxRollupSubmitBatch]
     pub kind: OperationKind,
@@ -28,7 +28,7 @@ pub struct TxRollupSubmitBatch {
     pub metadata: Option<TxRollupSubmitBatchMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupSubmitBatchMetadata {
     pub operation_result: TxRollupSubmitBatchOperationResult,
     #[serde(default)]

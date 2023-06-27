@@ -13,7 +13,7 @@ use {
     tezos_core::types::encoded::{Address, ContractAddress, ImplicitAddress},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct OriginationOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -36,7 +36,7 @@ pub struct OriginationOperationResult {
     pub errors: Option<Vec<RpcError>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct OriginationSuccessfulManagerOperationResult {
     /// [OperationKind::Origination]
     pub kind: OperationKind,
@@ -58,7 +58,7 @@ pub struct OriginationSuccessfulManagerOperationResult {
     pub lazy_storage_diff: Option<LazyStorageDiff>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct InternalOriginationOperationResult {
     /// [OperationKind::Origination]
     pub kind: OperationKind,

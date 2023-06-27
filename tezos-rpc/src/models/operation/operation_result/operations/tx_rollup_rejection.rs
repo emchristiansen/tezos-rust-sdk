@@ -3,7 +3,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRejectionOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]

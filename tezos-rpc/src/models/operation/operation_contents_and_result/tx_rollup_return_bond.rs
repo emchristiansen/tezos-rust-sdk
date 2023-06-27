@@ -10,7 +10,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupReturnBond {
     /// [OperationKind::TxRollupReturnBond]
     pub kind: OperationKind,
@@ -25,7 +25,7 @@ pub struct TxRollupReturnBond {
     pub metadata: Option<TxRollupReturnBondMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupReturnBondMetadata {
     pub operation_result: TxRollupReturnBondOperationResult,
     #[serde(default)]

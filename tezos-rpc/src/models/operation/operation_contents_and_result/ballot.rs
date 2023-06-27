@@ -4,7 +4,7 @@ use {
     tezos_core::types::encoded::{ImplicitAddress, ProtocolHash},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Ballot {
     /// [OperationKind::Ballot]
     pub kind: OperationKind,
@@ -41,7 +41,7 @@ impl From<Ballot> for tezos_operation::operations::Ballot {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum BallotStatement {
     Nay,

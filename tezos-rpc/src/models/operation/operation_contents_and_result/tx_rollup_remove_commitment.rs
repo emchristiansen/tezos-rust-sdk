@@ -10,7 +10,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRemoveCommitment {
     /// [OperationKind::TxRollupRemoveCommitment]
     pub kind: OperationKind,
@@ -25,7 +25,7 @@ pub struct TxRollupRemoveCommitment {
     pub metadata: Option<TxRollupRemoveCommitmentMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupRemoveCommitmentMetadata {
     pub operation_result: TxRollupRemoveCommitmentOperationResult,
     #[serde(default)]

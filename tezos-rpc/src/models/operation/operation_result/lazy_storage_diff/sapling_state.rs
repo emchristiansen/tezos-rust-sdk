@@ -4,14 +4,14 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SaplingState {
     pub kind: Kind,
     pub id: String,
     pub diff: Diff,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Diff {
     pub action: DiffAction,
     pub updates: Vec<Update>,
@@ -20,20 +20,20 @@ pub struct Diff {
     pub memo_size: Option<u16>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Update {
     pub commitments_and_ciphertexts: Vec<[CommitmentAndCiphertext; 2]>,
     pub nullifiers: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum CommitmentAndCiphertext {
     Commitment(String),
     Ciphertext(Ciphertext),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Ciphertext {
     pub cv: String,
     pub epk: String,

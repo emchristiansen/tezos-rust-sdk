@@ -8,7 +8,7 @@ use {
     tezos_core::types::{encoded::ImplicitAddress, mutez::Mutez},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SetDepositsLimit {
     /// [OperationKind::SetDepositsLimit]
     pub kind: OperationKind,
@@ -54,7 +54,7 @@ impl TryFrom<SetDepositsLimit> for tezos_operation::operations::SetDepositsLimit
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SetDepositsLimitMetadata {
     pub operation_result: SetDepositsLimitOperationResult,
     #[serde(default)]

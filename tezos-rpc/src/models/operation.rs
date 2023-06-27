@@ -36,7 +36,7 @@ use {
     tezos_core::types::encoded::{BlockHash, ChainId, OperationHash, ProtocolHash, Signature},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Operation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub protocol: Option<ProtocolHash>,
@@ -84,7 +84,7 @@ impl From<tezos_operation::operations::SignedOperation> for Operation {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, enum_as_inner::EnumAsInner)]
+#[derive(Debug, Serialize, Deserialize, Clone, enum_as_inner::EnumAsInner, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum OperationContent {
     // Present in alpha protocol

@@ -9,7 +9,7 @@ use {
     tezos_core::types::{encoded::ImplicitAddress, mutez::Mutez},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Origination {
     /// [OperationKind::Origination]
     pub kind: OperationKind,
@@ -62,7 +62,7 @@ impl TryFrom<Origination> for tezos_operation::operations::Origination {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct OriginationMetadata {
     pub operation_result: OriginationOperationResult,
     #[serde(default)]

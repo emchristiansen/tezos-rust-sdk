@@ -11,7 +11,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Reveal {
     /// [OperationKind::Reveal]
     pub kind: OperationKind,
@@ -57,7 +57,7 @@ impl TryFrom<Reveal> for tezos_operation::operations::Reveal {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct RevealMetadata {
     pub operation_result: RevealOperationResult,
     #[serde(default)]

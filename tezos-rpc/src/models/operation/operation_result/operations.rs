@@ -37,7 +37,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum OperationResult {
     Reveal(RevealOperationResult),
@@ -49,7 +49,7 @@ pub enum OperationResult {
     SetDepositsLimits(SetDepositsLimitOperationResult),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum SuccessfulManagerOperationResult {
     Transaction(TransactionSuccessfulManagerOperationResult),
@@ -59,7 +59,7 @@ pub enum SuccessfulManagerOperationResult {
     SetDepositsLimits(SetDepositsLimitSuccessfulManagerOperationResult),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum InternalOperationResult {
     Transaction(InternalTransactionOperationResult),

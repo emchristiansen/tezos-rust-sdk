@@ -6,7 +6,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SeedNonceRevelation {
     /// [OperationKind::SeedNonceRevelation]
     pub kind: OperationKind,

@@ -6,7 +6,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Preendorsement {
     /// [OperationKind::Preendorsement]
     pub kind: OperationKind,
@@ -46,7 +46,7 @@ impl From<Preendorsement> for tezos_operation::operations::Preendorsement {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct PreendorsementMetadata {
     /// Public key hash (Base58Check-encoded)
     pub delegate: ImplicitAddress,

@@ -13,7 +13,7 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupDispatchTickets {
     /// [OperationKind::TxRollupDispatchTickets]
     pub kind: OperationKind,
@@ -33,14 +33,14 @@ pub struct TxRollupDispatchTickets {
     pub metadata: Option<TxRollupDispatchTicketsMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupDispatchTicketsMetadata {
     pub operation_result: TxRollupDispatchTicketsOperationResult,
     #[serde(default)]
     pub balance_updates: Vec<BalanceUpdate>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TicketInfo {
     pub contents: Micheline,
     pub ty: Micheline,

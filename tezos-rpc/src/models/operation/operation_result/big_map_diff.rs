@@ -6,7 +6,7 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct BigMapDiff {
     pub action: DiffAction,
     #[serde(skip_serializing_if = "Option::is_none")]

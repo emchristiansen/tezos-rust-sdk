@@ -6,7 +6,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SetDepositsLimitOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -17,7 +17,7 @@ pub struct SetDepositsLimitOperationResult {
     pub errors: Option<Vec<RpcError>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct SetDepositsLimitSuccessfulManagerOperationResult {
     /// [OperationKind::SetDepositsLimit]
     pub kind: OperationKind,

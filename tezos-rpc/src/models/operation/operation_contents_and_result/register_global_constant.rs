@@ -9,7 +9,7 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct RegisterGlobalConstant {
     /// [OperationKind::RegisterGlobalConstant]
     pub kind: OperationKind,
@@ -54,7 +54,7 @@ impl TryFrom<RegisterGlobalConstant> for tezos_operation::operations::RegisterGl
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct RegisterGlobalConstantMetadata {
     pub operation_result: RegisterGlobalConstantOperationResult,
     #[serde(default)]

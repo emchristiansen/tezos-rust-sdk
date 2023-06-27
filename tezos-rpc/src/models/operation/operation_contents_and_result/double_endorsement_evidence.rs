@@ -9,7 +9,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct DoubleEndorsementEvidence {
     /// [OperationKind::DoubleEndorsementEvidence]
     pub kind: OperationKind,
@@ -41,7 +41,7 @@ impl TryFrom<DoubleEndorsementEvidence> for tezos_operation::operations::DoubleE
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct InlinedEndorsement {
     /// A block identifier (Base58Check-encoded)
     pub branch: BlockHash,

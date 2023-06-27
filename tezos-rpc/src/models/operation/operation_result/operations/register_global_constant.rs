@@ -7,7 +7,7 @@ use {
     tezos_core::types::encoded::ScriptExprHash,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct RegisterGlobalConstantOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -7,14 +7,14 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct EventOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub consumed_milligas: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct InternalEventOperationResult {
     /// [OperationKind::Event]
     pub kind: OperationKind,

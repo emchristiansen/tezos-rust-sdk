@@ -7,7 +7,7 @@ use {
     tezos_core::types::{encoded::ImplicitAddress, mutez::Mutez},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupOrigination {
     /// [OperationKind::TxRollupOrigination]
     pub kind: OperationKind,
@@ -22,7 +22,7 @@ pub struct TxRollupOrigination {
     pub metadata: Option<TxRollupOriginationMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupOriginationMetadata {
     pub operation_result: TxRollupOriginationOperationResult,
     #[serde(default)]

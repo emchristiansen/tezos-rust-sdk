@@ -8,7 +8,7 @@ use {
     tezos_michelson::micheline::{sequence::Sequence, Micheline},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct ContractScript {
     pub code: Sequence,
     pub storage: Micheline,

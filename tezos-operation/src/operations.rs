@@ -166,7 +166,7 @@ impl From<SignedOperation> for UnsignedOperation {
 
 /// The [SignedOperation] struct represent a signed tezos operation. It can be torned to an injectable string,
 /// which can be injected into the Tezos blockchain using the `tezos-rpc` crate.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct SignedOperation {
     pub branch: BlockHash,
     pub contents: Vec<OperationContent>,

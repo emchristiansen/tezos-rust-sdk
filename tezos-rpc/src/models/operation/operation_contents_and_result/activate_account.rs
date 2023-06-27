@@ -6,7 +6,7 @@ use {
     tezos_core::types::encoded::Ed25519PublicKeyHash,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct ActivateAccount {
     /// [OperationKind::ActivateAccount]
     pub kind: OperationKind,

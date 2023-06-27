@@ -10,7 +10,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupCommit {
     /// [OperationKind::TxRollupCommit]
     pub kind: OperationKind,
@@ -26,14 +26,14 @@ pub struct TxRollupCommit {
     pub metadata: Option<TxRollupCommitMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupCommitMetadata {
     pub operation_result: TxRollupCommitOperationResult,
     #[serde(default)]
     pub balance_updates: Vec<BalanceUpdate>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupCommitment {
     /// integer ∈ [-2^31-1, 2^31],
     pub level: i32,

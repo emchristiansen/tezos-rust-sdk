@@ -7,7 +7,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct DoubleBakingEvidence {
     /// [OperationKind::DoubleBakingEvidence]
     pub kind: OperationKind,

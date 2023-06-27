@@ -7,7 +7,7 @@ use {
     tezos_core::types::encoded::{Address, ImplicitAddress},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct DelegationOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -18,7 +18,7 @@ pub struct DelegationOperationResult {
     pub errors: Option<Vec<RpcError>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct DelegationSuccessfulManagerOperationResult {
     /// [OperationKind::Delegation]
     pub kind: OperationKind,
@@ -28,7 +28,7 @@ pub struct DelegationSuccessfulManagerOperationResult {
     pub consumed_milligas: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct InternalDelegationOperationResult {
     /// [OperationKind::Delegation]
     pub kind: OperationKind,

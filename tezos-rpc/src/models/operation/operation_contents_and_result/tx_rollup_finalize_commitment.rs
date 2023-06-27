@@ -10,7 +10,7 @@ use {
     },
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupFinalizeCommitment {
     /// [OperationKind::TxRollupFinalizeCommitment]
     pub kind: OperationKind,
@@ -25,7 +25,7 @@ pub struct TxRollupFinalizeCommitment {
     pub metadata: Option<TxRollupFinalizeCommitmentMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TxRollupFinalizeCommitmentMetadata {
     pub operation_result: TxRollupFinalizeCommitmentOperationResult,
     #[serde(default)]

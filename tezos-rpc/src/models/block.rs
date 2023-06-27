@@ -27,7 +27,7 @@ pub struct Block {
     pub metadata: Option<Metadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct Header {
     pub level: i32,
     pub proto: u8,
@@ -108,7 +108,7 @@ impl TryFrom<Header> for tezos_operation::block_header::BlockHeader {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum LiquidityBakingToggleVote {
     On,

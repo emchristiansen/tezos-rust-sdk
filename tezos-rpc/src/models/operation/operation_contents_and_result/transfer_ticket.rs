@@ -11,7 +11,7 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TransferTicket {
     /// [OperationKind::TransferTicket]
     pub kind: OperationKind,
@@ -31,7 +31,7 @@ pub struct TransferTicket {
     pub metadata: Option<TransferTicketMetadata>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
 pub struct TransferTicketMetadata {
     pub operation_result: TransferTicketOperationResult,
     #[serde(default)]
