@@ -25,7 +25,9 @@ macro_rules! make_primitive_enum {
             fn from_str(s: &str) -> Result<Self> {
                 match s {
                     $(stringify!($code) => Ok(Self::$name),)*
-                    _ => Err(Error::InvalidStringValue),
+                    _ => {
+                        // println!("INVALID STRING: {}", s);
+                    Err(Error::InvalidStringValue)},
                 }
             }
         }

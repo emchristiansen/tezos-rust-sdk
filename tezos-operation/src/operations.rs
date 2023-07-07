@@ -235,7 +235,7 @@ impl Operation for SignedOperation {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, enum_as_inner::EnumAsInner)]
 pub enum OperationContent {
     SeedNonceRevelation(SeedNonceRevelation),
     DoubleEndorsementEvidence(DoubleEndorsementEvidence),

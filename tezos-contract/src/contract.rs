@@ -5,7 +5,7 @@ mod storage;
 use async_trait::async_trait;
 
 use tezos_core::types::{
-    encoded::{Address, ContractHash, ImplicitAddress, ContractAddress},
+    encoded::{Address, ContractAddress, ContractHash, ImplicitAddress},
     mutez::Mutez,
     number::{Int, Nat},
 };
@@ -82,7 +82,7 @@ impl Contract {
     pub fn entrypoints(&self) -> &MappedEntrypoints {
         &self.entrypoints
     }
-    
+
     pub(crate) fn new(
         address: ContractHash,
         script: ContractScript,
@@ -173,7 +173,7 @@ impl ParametersValueConstructor for Type {
                     return Ok(MichelinePacker::pre_pack(value.into(), &schema)?);
                 } else {
                     return Err(Error::IncompatibleValue {
-                        description: format!("{:?} is incompative for type: {:?}", value, self),
+                        description: format!("{:?} is incompatible for type: {:?}", value, self),
                     });
                 }
             }
@@ -234,7 +234,10 @@ impl ParametersValueConstructor for Type {
                 ))
             }
             _ => Err(Error::IncompatibleValue {
-                description: format!("Could not construct value type: {:?}", self),
+                description: format!(
+                    "Could not construct value type: {:?} with arguments {:?}",
+                    self, arguments
+                ),
             }),
         }
     }

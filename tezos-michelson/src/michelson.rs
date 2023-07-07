@@ -299,6 +299,7 @@ impl TryFrom<&str> for Primitive {
         if let Ok(primitive) = primitive {
             return Ok(Primitive::ComparableType(primitive));
         }
+        // println!("INVALID STRING: {}", value);
         Err(Error::InvalidStringValue)
     }
 }
