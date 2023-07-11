@@ -23,7 +23,7 @@ macro_rules! make_all_data {
         /// Tezos Michelson data types as defined in [the documentation](https://tezos.gitlab.io/active/michelson.html#full-grammar).
         ///
         /// See also: [Michelson Reference](https://tezos.gitlab.io/michelson-reference/).
-        #[derive(Debug, Clone, PartialEq)]
+        #[derive(Debug, Clone, PartialEq, enum_as_inner::EnumAsInner)]
         pub enum Data {
             $($($enum_case_name($enum_case_type),)*)+
             $($name($name),)*

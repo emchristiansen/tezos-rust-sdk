@@ -1,8 +1,9 @@
 use num_bigint::BigUint;
 
-pub const GAS_SAFETY_MARGIN: u64 = 100;
-pub const STORAGE_SAFETY_MARGIN: u64 = 100;
-pub const FEE_SAFTY_MARGIN: u8 = 100;
+// ERICMC
+pub const GAS_SAFETY_MARGIN: u64 = 0;
+pub const STORAGE_SAFETY_MARGIN: u64 = 0;
+pub const FEE_SAFETY_MARGIN: u8 = 0;
 pub const BASE_FEE: u8 = 100;
 pub const FEE_PER_GAS_UNIT: u64 = 100; // nanoTez
 pub const FEE_PER_STORAGE_BYTE: u64 = 1000; // nanoTez

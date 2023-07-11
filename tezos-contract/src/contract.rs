@@ -165,6 +165,10 @@ trait ParametersValueConstructor {
 
 impl ParametersValueConstructor for Type {
     fn construct_parameter_value(&self, arguments: &mut Vec<(&str, Data)>) -> Result<Micheline> {
+        // println!(
+        //     "Constructing type:\n\n{:#?}\n\nwith args:\n\n{:#?}",
+        //     self, arguments
+        // );
         if let Some(key) = self.metadata().any_annotation_value() {
             if let Some(matching_arg_index) = arguments.iter().position(|arg| arg.0.eq(key)) {
                 let value = arguments.remove(matching_arg_index).1.normalized();
@@ -200,6 +204,7 @@ impl ParametersValueConstructor for Type {
                 .into());
             }
             Self::List(list) => {
+                // println!("Inside List with args: {:#?}", arguments);
                 let value = (&list.r#type).construct_parameter_value(arguments)?;
                 Ok(Micheline::Sequence(vec![value].into()))
             }
@@ -233,9 +238,38 @@ impl ParametersValueConstructor for Type {
                     .into(),
                 ))
             }
+            // Type::Or(or) => {
+            //     println!("Inside Or with args: {:#?}", arguments);
+            //     if let Some(first) = arguments.first().cloned() {
+            //         let value = first.1.normalized();
+            //         if first.0.is_empty() && value.is_left() {
+            //             let left = (&or.lhs).construct_parameter_value(arguments)?;
+            //             return Ok(PrimitiveApplication::new(
+            //                 Primitive::Data(DataPrimitive::Left).into(),
+            //                 Some(vec![left]),
+            //                 None,
+            //             )
+            //             .into());
+            //         } else if first.0.is_empty() && value.is_right() {
+            //             let right = (&or.rhs).construct_parameter_value(arguments)?;
+            //             return Ok(PrimitiveApplication::new(
+            //                 Primitive::Data(DataPrimitive::Right).into(),
+            //                 Some(vec![right]),
+            //                 None,
+            //             )
+            //             .into());
+            //         }
+            //     }
+            //     return Err(Error::IncompatibleValue {
+            //         description: format!(
+            //             "Could not construct value type:\n\n{:#?}\n\nwith arguments\n\n{:#?}",
+            //             self, arguments
+            //         ),
+            //     });
+            // }
             _ => Err(Error::IncompatibleValue {
                 description: format!(
-                    "Could not construct value type: {:?} with arguments {:?}",
+                    "Could not construct value type:\n\n{:#?}\n\nwith arguments\n\n{:#?}",
                     self, arguments
                 ),
             }),

@@ -78,7 +78,7 @@ lazy_static! {
 #[rem_assign(forward)]
 #[cfg_attr(
     feature = "serde",
-    derive(Serialize, Deserialize),
+    derive(Serialize, Deserialize, Ord),
     serde(try_from = "String")
 )]
 pub struct Mutez(#[cfg_attr(feature = "serde", serde(serialize_with = "i64_to_string"))] i64);

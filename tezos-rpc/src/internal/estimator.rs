@@ -18,7 +18,7 @@ use crate::{
         error::RpcError,
         limits::{
             Limits, OperationLimits, BASE_FEE, FEE_PER_GAS_UNIT, FEE_PER_STORAGE_BYTE,
-            FEE_SAFTY_MARGIN, GAS_SAFETY_MARGIN, NANO_TEZ_PER_MUTEZ, STORAGE_SAFETY_MARGIN,
+            FEE_SAFETY_MARGIN, GAS_SAFETY_MARGIN, NANO_TEZ_PER_MUTEZ, STORAGE_SAFETY_MARGIN,
         },
         operation::{
             operation_result::{operations::InternalOperationResult, OperationResultStatus},
@@ -62,7 +62,15 @@ impl<'a, HttpClient: Http + Sync> FeeEstimator for OperationFeeEstimator<'a, Htt
         operation.signature = Some(PLACEHOLDER_SIGNATURE.try_into().unwrap());
         let run_operation_result = self.rpc.run_operation(&operation).send().await?;
         let unsigned_operation = UnsignedOperation::new(operation.branch, operation_contents);
-        unsigned_operation.try_update_with(run_operation_result.contents)
+        unsigned_operation
+            .try_update_with(run_operation_result.contents.clone())
+            .map_err(|e| {
+                println!(
+                    "Operation not applied when estimating fee:\n{:#?}",
+                    run_operation_result.contents
+                );
+                e
+            })
     }
 }
 
@@ -282,7 +290,7 @@ fn fee(operation_size: usize, limits: &OperationLimits) -> Result<Mutez> {
     let storage_fee: Mutez =
         nanotez_to_mutez(BigUint::from(FEE_PER_STORAGE_BYTE) * BigUint::from(operation_size))?;
     let base: Mutez = BASE_FEE.into();
-    let safty_margin: Mutez = FEE_SAFTY_MARGIN.into();
+    let safty_margin: Mutez = FEE_SAFETY_MARGIN.into();
 
     Ok(base + gas_fee + storage_fee + safty_margin)
 }
@@ -420,7 +428,7 @@ trait RpcOperationResult {
             return Err(error);
         }
         Ok(OperationLimits {
-            gas: (self.consumed_milligas() / 1000u32) + GAS_SAFETY_MARGIN,
+            gas: ((self.consumed_milligas() + 999u32) / 1000u32) + GAS_SAFETY_MARGIN,
             storage: self.paid_storage_size_diff().unwrap_or(0u8.into())
                 + STORAGE_SAFETY_MARGIN
                 + self.burn_fee(),
