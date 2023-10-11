@@ -14,7 +14,7 @@ hex = "0.4"
 serde = { version = "1", features = ["derive"], optional = true }
 chrono = { version = "0.4", features = ["std"], default-features = false }
 lazy_static = "1"
-enum-as-inner = "0.5.2"
+enum-as-inner = "0.6.0"
 
 tezos-core = { path = "../tezos-core" }
 

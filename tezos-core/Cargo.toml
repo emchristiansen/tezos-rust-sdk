@@ -19,7 +19,7 @@ lazy_static = "1"
 serde = { version = "1", features = ["derive"], optional = true }
 blake2 = "0.10"
 cfg-if = "1"
-enum-as-inner = "0.5.2"
+enum-as-inner = "0.6.0"
 
 [features]
 full_crypto = ["ed25519", "secp256_k1", "p256"]
