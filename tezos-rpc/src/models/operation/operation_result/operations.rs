@@ -59,7 +59,7 @@ pub enum SuccessfulManagerOperationResult {
     SetDepositsLimits(SetDepositsLimitSuccessfulManagerOperationResult),
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, enum_as_inner::EnumAsInner)]
 #[serde(untagged)]
 pub enum InternalOperationResult {
     Transaction(InternalTransactionOperationResult),

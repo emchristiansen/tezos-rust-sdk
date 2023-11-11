@@ -38,7 +38,7 @@ use crate::{
 ///
 /// let michelson: Michelson = data::pair(vec![data::int(0), data::int(2)]);
 /// ```
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, enum_as_inner::EnumAsInner)]
 pub enum Michelson {
     Data(Data),
     Type(Type),
@@ -93,13 +93,6 @@ impl Michelson {
     /// with each pair having exactly 2 elements.
     pub fn normalized(self) -> Self {
         MichelsonNormalizer::normalize(self)
-    }
-
-    fn is_data(&self) -> bool {
-        if let Self::Data(_) = self {
-            return true;
-        }
-        return false;
     }
 
     fn is_instruction(&self) -> bool {

@@ -18,7 +18,7 @@ use crate::{
 /// See:
 /// - [ImplicitAddress]
 /// - [ContractAddress]
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),
@@ -144,7 +144,7 @@ impl TryFrom<Address> for ContractHash {
 /// - [Ed25519PublicKeyHash]
 /// - [Secp256K1PublicKeyHash]
 /// - [P256PublicKeyHash]
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize, enum_as_inner::EnumAsInner),
@@ -274,10 +274,10 @@ impl From<P256PublicKeyHash> for ImplicitAddress {
     }
 }
 
-/// A base58 encoded contract address with optianally an entrypoint.
+/// A base58 encoded contract address with optionally an entrypoint.
 ///
 /// See also: [ContractHash].
-#[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),
