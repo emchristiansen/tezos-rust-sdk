@@ -46,9 +46,12 @@ impl BigMap {
         let packed_key = key.pack(Some(&self.key_type))?;
         let hashed = Tezos::default().get_crypto().blake2b(&packed_key, 32)?;
         let script_expr: ScriptExprHash = (&hashed).try_into()?;
+        // ERICMC: In the Ocaml sidecar we're hard-coding Optimized_legacy, but
+        // we're disabling it here because it changes the URL to a POST URL that
+        // is no longer supported by Octez.
         let mut request = client
-            .get_big_map_value(self.id, &script_expr)
-            .unparsing_mode(UnparsingMode::Optimized_legacy);
+            .get_big_map_value(self.id, &script_expr);
+            // .unparsing_mode(UnparsingMode::Optimized_legacy);
         if let Some(block_id) = block_id {
             request = request.block_id(block_id);
         }
