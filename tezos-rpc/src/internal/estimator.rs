@@ -64,12 +64,17 @@ impl<'a, HttpClient: Http + Sync> FeeEstimator for OperationFeeEstimator<'a, Htt
         let unsigned_operation = UnsignedOperation::new(operation.branch, operation_contents);
         unsigned_operation
             .try_update_with(run_operation_result.contents.clone())
-            .map_err(|e| {
-                println!(
-                    "Operation not applied when estimating fee:\n{:#?}",
-                    run_operation_result.contents
-                );
-                e
+            .map_err(|_e| {
+                // println!(
+                //     "Operation not applied when estimating fee:\n{:#?}",
+                //     run_operation_result.contents
+                // );
+                Error::RpcErrorPlain {
+                    description: format!(
+                        "Operation not applied when estimating fee:\n{:#?}",
+                        run_operation_result.contents
+                    ),
+                }
             })
     }
 }

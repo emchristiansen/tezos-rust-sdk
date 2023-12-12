@@ -49,9 +49,8 @@ impl BigMap {
         // ERICMC: In the Ocaml sidecar we're hard-coding Optimized_legacy, but
         // we're disabling it here because it changes the URL to a POST URL that
         // is no longer supported by Octez.
-        let mut request = client
-            .get_big_map_value(self.id, &script_expr);
-            // .unparsing_mode(UnparsingMode::Optimized_legacy);
+        let mut request = client.get_big_map_value(self.id, &script_expr);
+        // .unparsing_mode(UnparsingMode::Optimized_legacy);
         if let Some(block_id) = block_id {
             request = request.block_id(block_id);
         }
@@ -60,6 +59,28 @@ impl BigMap {
 
         Ok(MichelinePacker::post_unpack(value, &schema)?)
     }
+
+    // // Get the whole map.
+    // pub async fn get<HttpClient: Http>(
+    //     &self,
+    //     client: &TezosRpc<HttpClient>,
+    //     block_id: Option<&BlockId>,
+    //     // ) -> Result<Vec<(Micheline, Micheline)>> {
+    // ) -> Result<Micheline> {
+    //     // ERICMC: In the Ocaml sidecar we're hard-coding Optimized_legacy, but
+    //     // we're disabling it here because it changes the URL to a POST URL that
+    //     // is no longer supported by Octez.
+    //     let mut request = client.get_big_map(self.id);
+    //     // .unparsing_mode(UnparsingMode::Optimized_legacy);
+    //     if let Some(block_id) = block_id {
+    //         request = request.block_id(block_id);
+    //     }
+    //     let value = request.send().await?;
+    //     Ok(value)
+    //     // let schema: Micheline = self.value_type.clone().into();
+
+    //     // Ok(MichelinePacker::post_unpack(value, &schema)?)
+    // }
 }
 
 #[derive(Debug, Clone)]
