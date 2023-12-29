@@ -6,7 +6,7 @@ use super::Micheline;
 use crate::{internal::normalizer::MichelineNormalizer, Error, Result};
 
 /// `Micheline` primitive application as defined in [the documentation](https://tezos.gitlab.io/shell/micheline.html#bnf-grammar).
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct PrimitiveApplication {
     prim: String,

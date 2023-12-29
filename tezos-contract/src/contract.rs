@@ -104,9 +104,11 @@ impl Contract {
             let mut args = arguments;
             let parameters = Parameters::new(
                 entrypoint,
-                entrypoint_type
-                    .construct_parameter_value(&mut args)?
-                    .normalized(),
+                entrypoint_type.construct_parameter_value(&mut args)?,
+                // Ericmc: Normalization seems to fuck things up.
+                // entrypoint_type
+                //     .construct_parameter_value(&mut args)?
+                //     .normalized(),
             );
             return Ok(PartialTransaction::new(
                 0u8.into(),
@@ -171,7 +173,9 @@ impl ParametersValueConstructor for Type {
         // );
         if let Some(key) = self.metadata().any_annotation_value() {
             if let Some(matching_arg_index) = arguments.iter().position(|arg| arg.0.eq(key)) {
-                let value = arguments.remove(matching_arg_index).1.normalized();
+                let value = arguments.remove(matching_arg_index).1;
+                // Ericmc: Normalization seems to fuck things up.
+                // let value = arguments.remove(matching_arg_index).1.normalized();
                 if value.is_compatible_with(self) {
                     let schema: Micheline = self.into();
                     return Ok(MichelinePacker::pre_pack(value.into(), &schema)?);
@@ -183,7 +187,9 @@ impl ParametersValueConstructor for Type {
             }
         }
         if let Some(first) = arguments.first().cloned() {
-            let value = first.1.normalized();
+            let value = first.1;
+            // Ericmc: Normalization seems to fuck things up.
+            // let value = first.1.normalized();
             if first.0.is_empty() && value.is_compatible_with(self) {
                 arguments.remove(0);
                 let schema: Micheline = self.into();

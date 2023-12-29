@@ -11,7 +11,7 @@ lazy_static! {
 }
 
 /// A structure representing bytes.
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Bytes(
     #[cfg_attr(
