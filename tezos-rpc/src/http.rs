@@ -38,6 +38,10 @@ pub trait Http {
     ) -> Result<T, Error>;
 }
 
+// It is best to reuse the same client for the entire application.
+static _REQWEST_CLIENT: once_cell::sync::Lazy<reqwest::Client> =
+    once_cell::sync::Lazy::new(reqwest::Client::new);
+
 #[cfg(feature = "http")]
 pub mod default {
     use crate::models::error::RpcError;
@@ -82,7 +86,7 @@ pub mod default {
         fn new(rpc_endpoint: String) -> Self {
             Self {
                 rpc_endpoint,
-                client: Client::new(),
+                client: _REQWEST_CLIENT.clone(),
             }
         }
 
