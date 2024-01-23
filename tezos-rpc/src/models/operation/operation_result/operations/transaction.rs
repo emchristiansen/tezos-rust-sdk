@@ -16,7 +16,7 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TransactionOperationResult {
     pub status: OperationResultStatus,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -43,7 +43,7 @@ pub struct TransactionOperationResult {
     pub errors: Option<Vec<RpcError>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TransactionSuccessfulManagerOperationResult {
     /// [OperationKind::Transaction]
     pub kind: OperationKind,
@@ -69,7 +69,7 @@ pub struct TransactionSuccessfulManagerOperationResult {
     pub lazy_storage_diff: Option<LazyStorageDiff>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Clone, Eq)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, Clone, Eq, PartialOrd, Ord)]
 pub struct InternalTransactionOperationResult {
     /// [OperationKind::Transaction]
     pub kind: OperationKind,

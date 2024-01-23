@@ -10,7 +10,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Delegation {
     /// [OperationKind::Delegation]
     pub kind: OperationKind,
@@ -57,7 +57,7 @@ impl TryFrom<Delegation> for tezos_operation::operations::Delegation {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct DelegationMetadata {
     #[serde(default)]
     pub balance_updates: Vec<BalanceUpdate>,

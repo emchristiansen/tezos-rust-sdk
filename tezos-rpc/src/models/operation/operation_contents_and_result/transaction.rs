@@ -21,7 +21,7 @@ const DO: &'static str = "do";
 const SET_DELEGATE: &'static str = "set_delegate";
 const REMOVE_DELEGATE: &'static str = "remove_delegate";
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Transaction {
     /// [OperationKind::Transaction]
     pub kind: OperationKind,
@@ -74,7 +74,7 @@ impl TryFrom<Transaction> for tezos_operation::operations::Transaction {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TransactionMetadata {
     pub operation_result: TransactionOperationResult,
     #[serde(default)]
@@ -83,7 +83,7 @@ pub struct TransactionMetadata {
     pub internal_operation_results: Vec<InternalOperationResult>,
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Clone, Eq)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, Clone, Eq, PartialOrd, Ord)]
 pub struct TransactionParameters {
     pub entrypoint: Entrypoint,
     pub value: Micheline,
@@ -107,7 +107,7 @@ impl From<TransactionParameters> for tezos_operation::operations::Parameters {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
 #[serde(untagged)]
 pub enum Entrypoint {
     Default,

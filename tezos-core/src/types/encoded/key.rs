@@ -260,7 +260,7 @@ impl From<P256SecretKey> for SecretKey {
 /// - [Ed25519PublicKey]
 /// - [Secp256K1PublicKey]
 /// - [P256PublicKey]
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),

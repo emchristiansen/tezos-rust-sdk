@@ -6,7 +6,7 @@ use std::fmt::Display;
 ///
 /// [RPC Errors](https://tezos.gitlab.io/api/errors.html)
 /// or by querying [`GET /errors`](https://tezos.gitlab.io/shell/rpc.html#get-errors)
-#[derive(Debug, Serialize, Deserialize, Clone, Error, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, Error, PartialEq, Eq, PartialOrd, Ord)]
 pub struct RpcError {
     pub kind: String,
     pub id: String,

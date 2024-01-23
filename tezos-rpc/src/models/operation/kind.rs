@@ -3,7 +3,7 @@ use {
     serde::{Deserialize, Serialize},
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq, Display)]
+#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, Eq, Display, PartialOrd, Ord)]
 #[serde(rename_all = "snake_case")]
 pub enum OperationKind {
     Endorsement,

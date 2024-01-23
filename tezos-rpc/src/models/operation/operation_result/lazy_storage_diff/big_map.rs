@@ -7,14 +7,14 @@ use {
     tezos_michelson::micheline::Micheline,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct BigMap {
     pub kind: Kind,
     pub id: String,
     pub diff: Diff,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Diff {
     pub action: DiffAction,
     pub updates: Vec<Update>,
@@ -32,7 +32,7 @@ pub struct Diff {
     pub value_type: Option<Micheline>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Update {
     pub key_hash: ScriptExprHash,
     pub key: Micheline,
