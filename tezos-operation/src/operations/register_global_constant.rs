@@ -3,7 +3,7 @@ use tezos_michelson::micheline::Micheline;
 
 use super::{OperationContentTag, TraitOperationContent, TraitOperationManagerContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct RegisterGlobalConstant {
     pub source: ImplicitAddress,
     pub fee: Mutez,

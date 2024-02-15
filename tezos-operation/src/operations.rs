@@ -94,7 +94,7 @@ pub trait Operation {
 /// ]);
 /// let signed_operation = unsigned_operation.into_signed_operation(&secret_key);
 /// ```
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct UnsignedOperation {
     /// The operation branch.
     pub branch: BlockHash,
@@ -166,7 +166,7 @@ impl From<SignedOperation> for UnsignedOperation {
 
 /// The [SignedOperation] struct represent a signed tezos operation. It can be torned to an injectable string,
 /// which can be injected into the Tezos blockchain using the `tezos-rpc` crate.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SignedOperation {
     pub branch: BlockHash,
     pub contents: Vec<OperationContent>,
@@ -235,7 +235,7 @@ impl Operation for SignedOperation {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, enum_as_inner::EnumAsInner)]
+#[derive(Debug, Clone, PartialEq, Eq, enum_as_inner::EnumAsInner, PartialOrd, Ord)]
 pub enum OperationContent {
     SeedNonceRevelation(SeedNonceRevelation),
     DoubleEndorsementEvidence(DoubleEndorsementEvidence),
@@ -404,7 +404,7 @@ impl OperationContentTag {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InlinedEndorsement {
     pub branch: BlockHash,
     pub operations: Endorsement,
@@ -421,7 +421,7 @@ impl InlinedEndorsement {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InlinedPreendrosement {
     pub branch: BlockHash,
     pub operations: Preendorsement,

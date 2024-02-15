@@ -7,7 +7,7 @@ use tezos_michelson::micheline::Micheline;
 
 use super::{OperationContentTag, TraitOperationContent, TraitOperationManagerContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Transaction {
     pub source: ImplicitAddress,
     pub fee: Mutez,
@@ -71,7 +71,7 @@ impl TraitOperationManagerContent for Transaction {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Parameters {
     pub entrypoint: Entrypoint,
     pub value: Micheline,
@@ -83,7 +83,7 @@ impl Parameters {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum Entrypoint {
     Default,
     Root,

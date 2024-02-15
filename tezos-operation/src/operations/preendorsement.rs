@@ -2,7 +2,7 @@ use tezos_core::types::encoded::BlockPayloadHash;
 
 use super::{OperationContentTag, TraitOperationConsensusContent, TraitOperationContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Preendorsement {
     pub slot: u16,
     pub level: i32,

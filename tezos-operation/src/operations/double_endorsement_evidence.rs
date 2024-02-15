@@ -1,6 +1,6 @@
 use super::{InlinedEndorsement, OperationContentTag, TraitOperationContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct DoubleEndorsementEvidence {
     pub op1: InlinedEndorsement,
     pub op2: InlinedEndorsement,

@@ -6,7 +6,7 @@ use tezos_core::{
 use super::{OperationContentTag, TraitOperationContent};
 use crate::{Error, Result};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Ballot {
     pub source: ImplicitAddress,
     pub period: i32,
@@ -31,7 +31,7 @@ impl TraitOperationContent for Ballot {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Type {
     Yay,
     Nay,

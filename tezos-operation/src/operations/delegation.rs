@@ -2,7 +2,7 @@ use tezos_core::types::{encoded::ImplicitAddress, mutez::Mutez, number::Nat};
 
 use super::{OperationContentTag, TraitOperationContent, TraitOperationManagerContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Delegation {
     pub source: ImplicitAddress,
     pub fee: Mutez,

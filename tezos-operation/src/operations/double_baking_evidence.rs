@@ -2,7 +2,7 @@ use crate::block_header::BlockHeader;
 
 use super::{OperationContentTag, TraitOperationContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct DoubleBakingEvidence {
     pub bh1: BlockHeader,
     pub bh2: BlockHeader,

@@ -7,7 +7,7 @@ use tezos_core::types::{
     hex_string::HexString,
 };
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct BlockHeader {
     pub level: i32,
     pub proto: u8,
@@ -25,7 +25,7 @@ pub struct BlockHeader {
     pub signature: Signature,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, FromPrimitive, ToPrimitive)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, FromPrimitive, ToPrimitive, PartialOrd, Ord)]
 #[repr(u8)]
 pub enum LiquidityBakingToggleVote {
     On = 0,

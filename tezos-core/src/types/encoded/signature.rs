@@ -21,7 +21,7 @@ use crate::{
 /// - [Ed25519Signature]
 /// - [Secp256K1Signature]
 /// - [P256Signature]
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),

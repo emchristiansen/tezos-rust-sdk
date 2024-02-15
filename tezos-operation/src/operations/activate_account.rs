@@ -2,7 +2,7 @@ use tezos_core::types::{encoded::Ed25519PublicKeyHash, hex_string::HexString};
 
 use super::{OperationContentTag, TraitOperationContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct ActivateAccount {
     pub pkh: Ed25519PublicKeyHash,
     pub secret: HexString,

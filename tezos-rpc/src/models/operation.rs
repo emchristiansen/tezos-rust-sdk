@@ -222,6 +222,22 @@ impl TryFrom<OperationContent> for tezos_operation::operations::OperationContent
     }
 }
 
+impl TryFrom<Operation> for tezos_operation::operations::SignedOperation {
+    type Error = Error;
+
+    fn try_from(value: Operation) -> Result<Self> {
+        Ok(Self {
+            branch: value.branch,
+            contents: value
+                .contents
+                .into_iter()
+                .map(|content| content.try_into())
+                .collect::<Result<Vec<_>>>()?,
+            signature: value.signature.ok_or(Error::InvalidConversion)?,
+        })
+    }
+}
+
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OperationWithMetadata {
     pub contents: Vec<OperationContent>,

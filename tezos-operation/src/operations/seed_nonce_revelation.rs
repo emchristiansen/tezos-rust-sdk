@@ -2,7 +2,7 @@ use tezos_core::types::hex_string::HexString;
 
 use super::{OperationContentTag, TraitOperationContent};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct SeedNonceRevelation {
     pub level: i32,
     pub nonce: HexString,

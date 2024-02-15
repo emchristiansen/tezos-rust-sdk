@@ -12,7 +12,7 @@ lazy_static! {
 }
 
 /// Hexadecimal [String] type-safe representation.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize, Deserialize),
