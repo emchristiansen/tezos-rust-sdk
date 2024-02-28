@@ -10,28 +10,28 @@ pub trait Http {
 
     fn change_rpc_endpoint(&mut self, rpc_endpoint: String);
 
-    async fn get<T: DeserializeOwned>(&self, url: &str) -> Result<T, Error>;
+    async fn get<T: DeserializeOwned + Send>(&self, url: &str) -> Result<T, Error>;
 
-    async fn get_with_query<T: DeserializeOwned, Q: Serialize + ?Sized + Sync>(
+    async fn get_with_query<T: DeserializeOwned + Send, Q: Serialize + ?Sized + Sync>(
         &self,
         url: &str,
         query: &Q,
     ) -> Result<T, Error>;
 
-    async fn post<B: Serialize + Sync, T: DeserializeOwned, Q: Serialize + Sync>(
+    async fn post<B: Serialize + Sync, T: DeserializeOwned + Send, Q: Serialize + Sync>(
         &self,
         url: &str,
         body: &B,
         query: Option<&Q>,
     ) -> Result<T, Error>;
 
-    async fn patch<B: Serialize + Sync, T: DeserializeOwned>(
+    async fn patch<B: Serialize + Sync, T: DeserializeOwned + Send>(
         &self,
         url: &str,
         body: Option<&B>,
     ) -> Result<T, Error>;
 
-    async fn delete<B: Serialize + Sync, T: DeserializeOwned>(
+    async fn delete<B: Serialize + Sync, T: DeserializeOwned + Send>(
         &self,
         url: &str,
         body: Option<&B>,
