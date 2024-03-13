@@ -39,8 +39,15 @@ pub trait Http {
 }
 
 // It is best to reuse the same client for the entire application.
-static _REQWEST_CLIENT: once_cell::sync::Lazy<reqwest::Client> =
-    once_cell::sync::Lazy::new(reqwest::Client::new);
+static _REQWEST_CLIENT: once_cell::sync::Lazy<reqwest::Client> = once_cell::sync::Lazy::new(|| {
+    reqwest::ClientBuilder::new()
+        // If this isn't set, the Octez node may erroneously close connections.
+        // I'm guessing this is a bug in the Octez node server library.
+        .pool_max_idle_per_host(0)
+        // .connection_verbose(true)
+        .build()
+        .unwrap()
+});
 
 #[cfg(feature = "http")]
 pub mod default {
@@ -65,6 +72,7 @@ pub mod default {
             response: Response,
         ) -> Result<T, Error> {
             if response.status() != 200 {
+                // println!("DEBUG: Response: {:?}", response);
                 // Do not parse JSON when the content type is `plain/text`
                 if response.headers()["content-type"] == "application/json" {
                     let errors: Vec<RpcError> = response.json().await?;

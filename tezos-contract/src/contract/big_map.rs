@@ -54,7 +54,9 @@ impl BigMap {
         if let Some(block_id) = block_id {
             request = request.block_id(block_id);
         }
+        // println!("DEBUG: ABOUT TO SEND");
         let value = request.send().await?;
+        // println!("DEBUG: SENT");
         let schema: Micheline = self.value_type.clone().into();
 
         Ok(MichelinePacker::post_unpack(value, &schema)?)
